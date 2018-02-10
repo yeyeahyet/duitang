@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>堆糖，美好生活研究所</title>
+	<link rel="stylesheet" type="text/css" href="__CSS__/indexpage.css">
+	<link href="__ROOT__/favicon.ico" rel="SHORTCUT ICON">
+	<script type="text/javascript" src="__JS__/jquery.js"></script>
+		<script type="text/javascript">
+	$(document).ready(function(){
+		$("tr.tr_color").mouseover(function(){
+			$(this).css("background-color","rgba(253,71,104,0.8)")
+		});
+		$("tr.tr_color").mouseout(function(){
+			$(this).css("background-color","#fff")
+			
+		})
+	})
+	</script>
+</head>
+<body>
+<div class="nav">
+	<div class="nav_ul">
+		<img src="__IMG__/logo.png">
+			<ul class="nav_left">
+				<li><img src="__ROOT__/public/user/{$userimg.userimg}" width="30px" height="30px">
+					<span>欢迎你 {$Think.session.nickname} <a href="__ROOT__/index.php/forum/user/logout"> 注销 </a>
+					<form method="post" action="{:url('user/change_pa')}">
+						<input type="password" name="newpa">
+						<input type="submit" value="更改密码">
+					</form></span>
+				</li>
+				<li>
+					<form method="post" action="{:url('upload_user')}" enctype="multipart/form-data">
+						<input type="file" name="user">
+						<input type="submit" value="上传">
+					</form>
+				</li>
+			</ul>
+			<ul id="nav_right">
+				<li><a href="{:url('post')}" style="color: #fd4768">论坛发帖</a></li>
+					
+				{volist name="sec" id="sec"}
+					<li {eq name="sec.section" value="$Request.param.section"} class="this_nav" {/eq}>			<a href="{:url('index',['section'=>$sec.section])}">{$sec.section}</a>
+				</li>
+				{/volist}
+
+			</ul>
+	</div>
+</div>
+<div class="content">
+		<table width="1200px">
+		<tr>
+			<th>标题</th>
+			<th>作者</th>
+			<th>发布时间</th>
+			<th>版块</th>
+			<th>点击量</th>
+		</tr>
+		{volist name="re" id="mes"}
+		<tr class="tr_color">
+			<td><a href="{:url('show',['id'=>$mes.id])}">{$mes.title}</a></td>
+			<td>{$mes.nickname}</td>
+			<td>{$mes.createAt|date="y-m-d h:m",###}</td>
+			<td>{$mes.section}</td>
+			<td>100</td>
+		</tr>
+		{/volist}
+	</table>
+		<div class="page">
+		<ul>
+			<li><a href="" class="next">上一页</a></li>
+			<li>{$page}</li>
+			<li><form><input type="text" value="1">/2页</form></li>
+			<li><a href="" class="next">下一页 ></a></li>
+		</ul>
+	</div>
+		<div class="banner">
+			<div class="adv">
+				<div class="play adv_img">
+       				<img src="__IMG__/adv1.jpeg" >
+        			<img src="__IMG__/adv2.jpeg" >
+        			<img src="__IMG__/adv3.jpeg" >
+        			<img src="__IMG__/adv4.jpeg" >
+       				<ul class="adv_text">
+            			<li>文具也要精致美好<span>by Miss天然卷</span></li>
+            			<li>卫衣变身百搭单品，时髦到没边！<span>by 遛弯</span></li>
+            			<li>气温降低十度，衬衫来拯救<span>by cold</span></li>
+           				<li>100元以内提升幸福感的小物<span>by 郑南音</span></li>
+      				</ul>
+    			</div>
+			</div>
+			<div class="banner_right">
+				<div class="hot">
+					<h4>社区热点</h4>
+					<hr/>
+					<ul>
+						<li><a href="">豆乳盒子</a></li>
+						<li><a href="">星空杯</a></li>
+						<li><a href="">便当</a></li>
+						<li><a href="">书单</a></li>
+						<li><a href="">宿舍神器</a></li>
+						<li><a href="">香氛攻略</a></li>
+						<li><a href="">男友视角</a></li>
+						<li><a href="">手袋包整理</a></li>
+						<li><a href="">维密大长腿</a></li>
+					</ul>
+					<hr/>
+					<p><a href="">研究同好会 ● 追求形体之美 </a><span> 精选</span></p>
+					<hr/>
+					<p><a href="">收图小助手:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;堆糖收集工具</a></p>
+				</div>
+				<div class="dowload">
+					<img src="__IMG__/download.jpeg">
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<div class="select">
+			<div class="select_title clearfix">
+				<h4>专辑精选</h4>
+				<a href="">往期回顾></a>
+			</div>
+			<span>
+				<img src="__IMG__/sel1.jpeg">
+				<p>当校服裤火遍全球</p>
+				<p class="like">59张图片 · 831人收藏</br>by 王三三的猫</p>
+			</span>
+			<span>
+				<img src="__IMG__/sel2.jpeg">
+				<p>今秋大热格纹元素，你准备好了吗</p>
+				<p class="like">79张图片 · 528人收藏</br>by 熊丸子</p>
+			</span>
+			<span>
+				<img src="__IMG__/sel3.jpeg">
+				<p>穿上奶奶的丝绒出街</p>
+				<p class="like">60张图片 · 483人收藏</br>by Miss天然卷</p>
+			</span>
+			<span>
+				<img src="__IMG__/sel4.jpeg">
+				<p>娘Man平衡小西装</p>
+				<p class="like">73张图片 · 781人收藏</br>by 夏茵</p>
+			</span>
+			<span>
+				<img src="__IMG__/sel5.jpeg">
+				<p>读书旅行找自己，穿搭好看也重要。</p>
+				<p class="like">96张图片 · 965人收藏</p>
+			</span>
+		</div>
+		<hr>
+		<div class="recomment">
+			<div class="buy  clearfix">
+				<h4>单品推荐</h4>
+				<ul class="buy_nav">
+					<li><a href="">良品购：</a></li>
+					<li><a href="">全部&nbsp;&nbsp;|</a></li>
+					<li><a href="">上衣&nbsp;&nbsp;|</a></li>
+					<li><a href="">裙裤&nbsp;&nbsp;|</a></li>
+					<li><a href="">配饰&nbsp;&nbsp;|</a></li>
+					<li><a href="">鞋子&nbsp;&nbsp;|</a></li>
+					<li><a href="">包袋&nbsp;&nbsp;|</a></li>
+					<li><a href="">日杂</a></li>
+				</ul>
+			</div>
+			<span class="recom_span">
+				<img src="__IMG__/buy1.jpeg">
+				<p>吊坠</p>
+				<p class="mount">744人在逛</p>
+				<a href=""  >良品购</a>
+			</span>
+			<span class="recom_span">
+				<img src="__IMG__/buy2.jpeg">
+				<p>高腰裙</p>
+				<p class="mount">435人在逛</p>
+				<a href=""  >良品购</a>
+			</span>
+			<span class="recom_span">
+				<img src="__IMG__/buy3.jpeg">
+				<p>帆布鞋</p>
+				<p class="mount">351人在逛</p>
+				<a href=""  >良品购</a>
+			</span>
+			<span class="recom_span">
+				<img src="__IMG__/buy4.jpeg">
+				<p>手拿包</p>
+				<p class="mount">484人在逛</p>
+				<a href=""  >良品购</a>
+			</span>
+			<span class="recom_span">
+				<img src="__IMG__/buy5.jpeg">
+				<p>棒球服</p>
+				<p class="mount">266人在逛</p>
+				<a href=""  >良品购</a>
+			</span>
+		</div>
+</div>
+<div class="footer">
+		<div class="footer_content">
+			<div>
+				<a href="">关于我们</a></br>
+				<a href="">关于我们</a>
+				<a href="">帮助中心</a></br>
+				<a href="">加入我们</a>
+				<a href="">堆糖收集工具</a>	</br>		
+				<a href="">联系我们</a>
+				<a href="">标签集</a></br>				
+				<a href="">商务合作</a>
+				<a href="">免责声明</a>
+			</div>
+			<div>
+				<a href="">手机应用</a></br>
+				<a href="">堆糖客户端</a>
+				<a href="">爱疯了壁纸</a></br>	
+				<a href="">堆糖良品购</a>
+			</div>
+			<div>
+				<img src="__IMG__/code.jpeg">
+				<p>扫描二维码</br>下载堆糖手机客户端</p>
+			</div>
+			<div>
+				<a href="">关注我们</a> </br>
+				<a href="">新浪微博</a>
+				<a href="">微信</a>
+			</div>
+			<div>
+				<a href="">友情链接</a> </br>
+				<a href="">爱物网</a>
+				<a href="">东方女性网</a></br>
+				<a href="">肉丁网</a>
+				<a href="">LADYMAX时尚</a></br>	
+				<a href="">美食美酒网</a>
+				<a href="">携程攻略</a></br>
+				<a href="">传导体招聘</a>
+				<a href="">更多..</a>
+			</div>
+			<p>©2017 duitang.com 版权所有。沪ICP备10038086号-3</p>
+		</div>
+</div>
+<script type="text/javascript" src="__JS__/login.js"></script>
+</body>
+</html>

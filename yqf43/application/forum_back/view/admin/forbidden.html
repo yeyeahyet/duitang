@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台——堆糖</title>
+	<link rel="stylesheet" type="text/css" href="__CSS__/admin.css">
+	<link href="__ROOT__/favicon.ico" rel="SHORTCUT ICON">
+	<script type="text/javascript" src="__JS__/jquery.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+</head>
+<body>
+	<table width="1200px">
+		<tr>
+		<th align="middle">头像</th>
+		<th align="middle">用户名</th>
+		<th align="middle">工号</th>		
+		<th align="middle">部门</th>
+		<th align="middle">操作</th>
+		</tr>
+		{volist name="user" id="user"}
+		<tr class="tr_color">
+		<td><img src="{$user.userimg}"></td>
+		<td>{$user.username}</td>
+		<td>{$user.userid}</td>
+		<td>{$user.userdep}</td>
+		<td align="middle">
+			<a href="{:url('do_forbidden',['userid'=>$user.userid])}" >禁用</a>
+		</td>
+		</tr>
+		{/volist}
+	</table>
+</div>
+</div>

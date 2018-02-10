@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改板块</title>
+</head>
+<body>
+	<div>
+		<h1>修改版块的名字和说明</h1>
+		<p>要求：版块名跟现有的不能重复;</p>
+		<form method="post" action="{:url('alert')}" id="post">
+		<table width="500px">
+			<tr><td width="70px">版块名</td>
+			<td><input type="text" name="section" value="{$section.section}">
+			</td></tr>
+			<tr><td width="70px">版块说明</td>
+			<td>
+			<textarea name="remark"rows="8" cols="35">{$section.remark}</textarea>
+			</td>
+			</tr>
+			<tr><td></td><td><input type="submit" value="提交"></td></tr>
+		</table>
+		</form>
+	</div>
+</body>
+</html>

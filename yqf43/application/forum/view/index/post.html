@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>堆糖论坛</title>
+	<link href="__ROOT__/favicon.ico" rel="SHORTCUT ICON">
+	<link rel="stylesheet" type="text/css" href="__CSS__/post.css">
+	<script type="text/javascript" src="__JS__/jquery.js"></script>
+
+	 <link rel="stylesheet" href="__JS__/jquery.cleditor.css" />
+    <script src="__JS__/jquery.min.js"></script>
+    <script src="__JS__/jquery.cleditor.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#input").cleditor();
+		$("#post").validate({
+			rules:{
+				title:{
+					required:true,
+					minlength:4,
+					maxlength:15
+				},
+				content:{
+					required:true,
+					minlength:20
+				},
+				section:{
+					required:true
+				}
+			},
+			messages:{
+				title:{
+					required:"<img src='__IMG__/error_16.png'><span class='tips'>请输入B标题</span>",
+					minlength:"<img src='__IMG__/error_16.png'><span class='tips'>标题最少4个字符</span>",
+					maxlength:"<img src='__IMG__/error_16.png'><span class='tips'>标题最多15个字符</span>"
+				},
+				content:{
+					required:"<img src='__IMG__/error_16.png'><span class='tips'>请输入内容</span>",
+					minlength:"<img src='__IMG__/error_16.png'><span class='tips'>内容最少20个字符</span>"
+				},
+				section:{
+					required:"<img src='__IMG__/error_16.png'><span class='tips'>请选择所属版块</span>"
+				}
+			}
+			});
+	})
+	</script>
+</head>
+<body>
+<div class="nav">
+	<div class="nav_ul">
+		<img src="__IMG__/logo.png">
+			<ul class="nav_left">
+				<li><img src="__ROOT__/public/user/{$userimg.userimg}" width="30">
+					<span>{$Think.session.nickname}<a href="__ROOT__/index.php/forum/user/logout"> 注销</a></span>
+				</li>
+			</ul>
+			<ul class="nav_right">
+				{volist name="section" id="section"}
+				<li {eq name="section.section" value="$Request.param.section"} class="this_nav" {/eq}>
+					<a href="{:url('post',['section'=>$section.section])}">{$section.section}</a>
+				</li>
+				{/volist}
+				<li><a href="__ROOT__/index.php/forum/index/index">首页</a></li>
+			</ul>
+	</div>
+</div>
+<form action="__ROOT__/index.php/forum/index/do_post" id="post" method="post" >
+	<table>
+	<tr><td>标题:　</td>
+	<td><input type="text" name="title"></td></tr>
+	<tr><td>内容:　</td>
+	<td>
+	 <textarea id="input" name="input"></textarea></td></tr>
+	<tr><td>版块:　</td>
+	<td><select name="section">
+		<option value="">请选择版块</option>		
+		{volist name='re' id='menu'}		
+		<option {eq name="menu.section" value="$Request.param.section"} selected="selected" =select {/eq} value="{$menu.section}" >{$menu.section}</option>
+		{/volist}
+	</select></td>
+	</tr>
+	<tr><td></td>
+	<td><input type="submit" value="留言" class="button"></td></tr>
+	</table>
+</form>
+</body>
+</html>

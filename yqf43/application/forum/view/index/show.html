@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文章详情</title>
+	<link rel="stylesheet" type="text/css" href="__CSS__/show.css">
+	<link href="__ROOT__/favicon.ico" rel="SHORTCUT ICON">
+	<script type="text/javascript" src="__JS__/jquery.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#show").validate({
+			rules:{
+				content:{
+					required:true,
+					minlength:20
+				}
+			},
+			messages:{
+				content:{
+					required:"<img src='__IMG__/error_16.png'><span class='tips'>请输入内容</span>",
+					minlength:"<img src='__IMG__/error_16.png'><span class='tips'>内容最少20个字符</span>"
+				}
+			}
+			});
+	}) 
+	</script>
+</head>
+<body>
+<div class="comment">
+<div class="nav">
+	<div class="nav_ul">
+		<img src="__IMG__/logo.png">
+			<ul class="nav_left">
+				<li><img src="__ROOT__/public/user/{$userimg.userimg}" width="30">
+					<span>{$Think.session.nickname}<a href="__ROOT__/index.php/forum/user/logout"> 注销</a></span>
+				</li>
+			</ul>
+			<ul class="nav_right">
+			{volist name="section" id="sec"}
+					<li {eq name="sec.section" value="$Request.param.section"} class="this_nav" {/eq}>			<a href="">{$sec.section}</a>
+				</li>
+				{/volist}			
+				<li><a href="{:url('index')}">首页</a></li>			
+			</ul>
+	</div>
+</div>
+	<div class="done">
+		{volist name="re" id="mes"}
+		<div class="detail">
+			<p class="title">{$mes.title}</p>
+			<p><img src="__ROOT__/public/user/{$mes.userimg}" width="30"> {$mes.nickname}</br><span>{$mes.createAt|date="m-d h:m",###}</span></p>
+			<p id="say">{$mes.content}</p>
+		</div>
+		{/volist}
+	</div>
+	<div class="page">
+		<ul>
+			<li><a href="" class="next">上一页></a></li>
+			<li><a href="">{$page}</a></li>
+			<li><form><input type="text" value="1">/2页</form></li>		
+			<li><a href="" class="next">下一页></a></li>
+			
+		</ul>
+	</div>
+</div>
+	<div class="do">
+		<form class="do" action="{:url('do_show',['id'=>input('id')])}" id="show" method="post">
+			<textarea placeholder="写下你的评论...." rows="5" cols="40" name="content"></textarea>
+			<img src="__IMG__/comment.png">
+			<input type="submit" value="回复" class="button">
+		</form>
+	</div>
+<div class="footer">
+		<div class="footer_content">
+			<div>
+				<a href="">关于我们</a></br>
+				<a href="">关于我们</a>
+				<a href="">帮助中心</a></br>
+				<a href="">加入我们</a>
+				<a href="">堆糖收集工具</a>	</br>		
+				<a href="">联系我们</a>
+				<a href="">标签集</a></br>				
+				<a href="">商务合作</a>
+				<a href="">免责声明</a>
+			</div>
+			<div>
+				<a href="">手机应用</a></br>
+				<a href="">堆糖客户端</a>
+				<a href="">爱疯了壁纸</a></br>	
+				<a href="">堆糖良品购</a>
+			</div>
+			<div>
+				<img src="__IMG__/code.jpeg">
+				<p>扫描二维码</br>下载堆糖手机客户端</p>
+			</div>
+			<div>
+				<a href="">关注我们</a> </br>
+				<a href="">新浪微博</a>
+				<a href="">微信</a>
+			</div>
+			<div>
+				<a href="">友情链接</a> </br>
+				<a href="">爱物网</a>
+				<a href="">东方女性网</a></br>
+				<a href="">肉丁网</a>
+				<a href="">LADYMAX时尚</a></br>	
+				<a href="">美食美酒网</a>
+				<a href="">携程攻略</a></br>
+				<a href="">传导体招聘</a>
+				<a href="">更多..</a>
+			</div>
+			<p>©2017 duitang.com 版权所有。沪ICP备10038086号-3</p>
+		</div>
+	</div>
+</body>
+</html>

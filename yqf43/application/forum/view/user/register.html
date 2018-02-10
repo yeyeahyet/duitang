@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>堆糖 美好生活研究所</title>
+	<link rel="stylesheet" type="text/css" href="__CSS__/register.css">
+	<link href="__ROOT__/favicon.ico" rel="SHORTCUT ICON">
+	<script type="text/javascript" src="__JS__/jquery.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#register").validate({
+			rules:{
+				userid:{
+					required:true,
+					digits:true,
+					minlength:10,
+					maxlength:10
+				},
+				nickname:{
+					required:true,
+					minlength:5,
+					maxlength:10
+				},
+				userdep:{
+					required:true
+				},
+				userpa:{
+					required:true,
+					minlength:6,
+					maxlength:16
+				},
+				pa2:{
+					equalTo:"#passwd"
+				}
+			},
+			messages:{
+				userid:{
+					required:"<img src='__IMG__/error_16.png'><span class='tips' display='inline-block'>请输入你的工号</span>",
+					digits:"<img src='__IMG__/error_16.png'><span class='tips'>工号必须是数字</span>",
+					minlength:"<img src='__IMG__/error_16.png'><span class='tips'>工号为10位数工</span>",
+					maxlength:"<img src='__IMG__/error_16.png'><span class='tips'>工号为10位数工</span>"
+				},
+				nickname:{
+					required:"<img src='__IMG__/error_16.png'><span class='tips'>请输入你的昵称</span>",
+					minlength:"<img src='__IMG__/error_16.png'><span class='tips'>姓名至少5个中文字符</span>",
+					maxlength:"<img src='__IMG__/error_16.png'><span class='tips'>姓名最多10个中文字符</span>"
+				},
+				userdep:{
+					required:"<img src='__IMG__/error_16.png'><span class='tips'>请选择所属部门</span>"
+				},
+				userpa:{
+					required:"<img src='__IMG__/error_16.png'><span class='tips'>请输入密码</span",
+					minlength:"<img src='__IMG__/error_16.png'><span class='tips'>密码至少6个中文字符</span",
+					maxlength:"<img src='__IMG__/error_16.png'><span class='tips'>密码最多16个中文字符</span"
+				},
+				pa2:{
+					equalTo:"<img src='__IMG__/error_16.png'><span class='tips'>密码输入不一致"
+				}
+			}
+			});
+	})
+	</script>
+</head>
+<body>
+	<div class="content">
+		<div class="login_head">注册
+			<a href="__ROOT__/index.php/forum/index/index"><img src="__IMG__/close.png"></a>
+		</div>
+		<div class="login">
+			<div class="login_form">
+				<form action="__ROOT__/index.php/forum/user/do_register" method="post" id="register">
+					<select name="userdep">
+						<option value="">请选择部门</option>
+						<option value="设计部">设计部</option>
+						<option value="工程部">工程部</option>
+						<option value="销售部">销售部</option>
+						<option value="人力资源部">人力资源部</option>
+					</select>
+					<input type="text" placeholder="请输入你的工号" name="userid">
+					<input type="text" placeholder="请输入你的昵称" name="nickname">
+					<input type="password" placeholder="请输入你的密码" name="userpa" id="passwd">
+					<input type="password" placeholder="再次输入密码" name="pa2">					
+					<input type="submit" value=" 注册" class="button">
+					<a href=""><img src="__IMG__/login_choice.png"></a>
+				</form>
+			</div>
+			<div class="login_code">
+				<img src="__IMG__/login_code.png">
+				<p>扫一扫下载手机客户端</br>
+				浏览体验更佳</p>
+			</div>
+		</div>
+		<div class="login_footer">
+		<p>©2017 duitang.com版权所有</p>
+		</div>
+	</div>
+</body>
+</html>

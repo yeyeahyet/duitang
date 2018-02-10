@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>>打印个人信息</title>
+		<link rel="stylesheet" type="text/css" href="__ROOT__/public/static/inc/hellocss.css">
+</head>
+<body>
+	<div class="content">
+		<div class="left">
+			<ul>
+				<li><h4>hello模块名</h4></li>
+				<li>模块名：user</li>
+				<li>控制器名：index</li>
+				<li>方法名：hello</li>
+				<li>模板名：hello.html</li>
+			</ul>
+		</div>
+		<div class="right">
+			<ul>
+				<li><h4>个人信息</h4></li>
+				<li>姓名：{$me.myname}</li>
+				<li>学号：{$me.myid}</li>
+				<li>班级：{$me.myclass}</li>
+			</ul>			
+		</div>
+	</div>
+</body>
+</html>
